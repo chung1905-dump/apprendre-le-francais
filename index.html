@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<title>Listen & Write</title>
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/bootstrap-theme.min.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<style>
+		.logo-header {
+			vertical-align: middle;
+		}
+	</style>
+	
+</head>
+<body>
+	<header id="header" class="">
+		<div class="top-bar">
+			<div class="container">
+				<div class="row">
+					<div class="col-xs-12 col-sm-6 col-md-8">
+						<div class="lang">
+							<div class="btn-group">	
+							  	<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							    English<span class="caret"></span>
+							  	</button>
+							  	<ul class="dropdown-menu">
+								    <li><a href="#">Vietnamese</a></li>
+								    <li><a href="#">French</a></li>			   
+							  	</ul>
+							</div>
+						</div>	
+					</div>
+  					<div class="col-xs-6 col-md-4">
+						<ul class="list-unstyled">
+							<li><a href="#"><span class="glyphicon glyphicon-plus-sign"></span>Sign up</a></li>
+							<li><a href="#"><span class="glyphicon glyphicon-user"></<span>Login</a></li>
+						</ul>
+  					</div>
+				</div>
+			</div>		
+		</div><!-- end .top-bar -->
+
+		<div class="main-header">
+			<div class="container">
+					<img class="logo-header" src="img/logo.png" alt="This logo is here">
+			</div>
+		</div><!-- end .main-header -->
+
+		<div class="main-nav">
+			<div class="container">
+				<div class="row">
+					<ul class="nav nav-pills">
+					    <li class="active"><a href="#"><span class="glyphicon glyphicon-home"></span>Home</a></li>
+					    <li><a href="#">Test</a></li>
+					    <li class="dropdown">
+					        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+					        <ul class="dropdown-menu">
+					            <li><a href="#">Action</a></li>
+					            <li><a href="#">Another action</a></li>
+					            <li><a href="#">Something else here</a></li>
+					            <li role="separator" class="divider"></li>
+					            <li><a href="#">Separated link</a></li>
+					            <li role="separator" class="divider"></li>
+					            <li><a href="#">One more separated link</a></li>
+					        </ul>
+					    </li>
+					    <li><a href="#">About us</a></li>
+					</ul>
+				</div>
+			</div>
+		</div><!-- end .main-nav -->
+
+	</header><!-- /header -->
+	
+	<section class="content">
+		<div class="test">
+			<div class="audio-test">
+				<audio controls>
+			  	<source src="audio/Sorry.mp3" type="audio/mpeg">
+				Your browser does not support the audio element.
+				</audio>
+			</div>
+			<div class="answer">
+				<textarea rows="4" cols="50" placeholder="Write a word here..."></textarea>
+			</div>
+			<div class="btn-answer">
+				<button type="button" class="btn btn-default">Check your answer</button>
+			</div>
+		</div>
+	</section><!-- end .content -->
+
+	<footer>
+	</footer>
+
+
+
+	<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+</body>
+</html>
