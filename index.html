@@ -78,11 +78,13 @@
 	<section class="content">
 		<div class="test">
 			<div class="audio-test">
-				<audio controls>
+				<audio controls id="audio_player">
 			  	<source src="audio/Sorry.mp3" type="audio/mpeg">
 				Your browser does not support the audio element.
 				</audio>
 			</div>
+			<button onclick="document.getElementById('audio_player').volume += 0.05">Vol+ </button>
+			<button onclick="document.getElementById('audio_player').volume -= 0.05">Vol- </button>
 			<div class="answer">
 				<textarea rows="4" cols="50" placeholder="Write a word here..."></textarea>
 			</div>
