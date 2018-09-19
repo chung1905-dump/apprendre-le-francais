@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Demo</title>
+    <script src="algorithms.js"></script>
+    <style>
+        div {
+            margin: 15px;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <label for="string1">String 1: </label>
+    <input id="string1" type="text">
+</div>
+<div>
+    <label for="string2">String 2: </label>
+    <input id="string2" type="text">
+</div>
+<div>
+    <input type="submit" onclick="compare()">
+</div>
+<hr>
+<div>
+    <div>
+        <span>Result by the 1st algorithm: </span>
+        <span id="result1">0 </span>
+    </div>
+    <div>
+        <span>Result by the 2nd algorithm: </span>
+        <span id="result2">0 </span>
+    </div>
+</div>
+<script>
+    'use strict';
+    var compare = function () {
+        var x = document.getElementById('string1').value,
+            y = document.getElementById('string2').value;
+        document.getElementById('result1').innerText = lcss(x, y);
+        document.getElementById('result2').innerText = lcss2(x, y);
+    };
+</script>
+</body>
+</html>
