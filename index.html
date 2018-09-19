@@ -14,6 +14,8 @@
 		}
 	</style>
 	
+	<script src="./js/algorithms.js"></script>
+
 </head>
 <body>
 	<header id="header" class="">
@@ -86,10 +88,17 @@
 			<button onclick="document.getElementById('audio_player').volume += 0.05">Vol+ </button>
 			<button onclick="document.getElementById('audio_player').volume -= 0.05">Vol- </button>
 			<div class="answer">
-				<textarea rows="4" cols="50" placeholder="Write a word here..."></textarea>
+				<textarea id="string1" rows="4" cols="50" placeholder="Write a word here..."></textarea>
+			</div>
+			<div class="answer">
+				<textarea id="string2" rows="4">This is a test</textarea>
 			</div>
 			<div class="btn-answer">
-				<button type="button" class="btn btn-default">Check your answer</button>
+				<button type="button" class="btn btn-default" onclick="compare()">Check your answer</button>
+			</div>
+			<div>
+				<span>Result by the 2nd algorithm: </span>
+				<span id="result2">0 </span>
 			</div>
 		</div>
 	</section><!-- end .content -->
@@ -98,7 +107,14 @@
 	</footer>
 
 
-
+	<script>
+		'use strict';
+    	var compare = function () {
+			var x = document.getElementById('string1').value,
+				y = document.getElementById('string2').value;
+			document.getElementById('result2').innerText = lcss2(x, y);
+    	};
+	</script>
 	<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
 	<script type="text/javascript" src="js/bootstrap.min.js"></script>
 </body>
