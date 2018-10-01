@@ -100,7 +100,7 @@
             <span id="result1">0</span>
         </div>
         <div>
-            <span>Result by the 2nd algorithm: </span>
+            <span>Result: </span>
             <span id="result2">0</span>
         </div>
     </div>
@@ -114,14 +114,16 @@
     'use strict';
     var checkAnswer = function () {
         var userAnswer = document.getElementById('answer_input').value,
-            correctAnswer = 'test dap an haha baba',
+            correctAnswer = 'vous allez bien quelle âge avez vous',
             maxPoint = 10,
             point1,
             point2;
-        point1 = lcss(userAnswer, correctAnswer) / correctAnswer.length * maxPoint;
-        point2 = lcss2(userAnswer, correctAnswer) / correctAnswer.length * maxPoint;
-        document.getElementById('result1').innerText = Math.round(point1 * 100) / 100 + '/' + maxPoint;
-        document.getElementById('result2').innerText = Math.round(point2 * 100) / 100 + '/' + maxPoint;
+            userAnswer = userAnswer.split(' ');
+            correctAnswer = correctAnswer.split(' ');
+        point1 = lcss(userAnswer, correctAnswer);
+        point2 = lcss2(userAnswer, correctAnswer);
+        document.getElementById('result1').innerText = point1;
+        // document.getElementById('result2').innerText = point2;
     };
 </script>
 <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>

@@ -12,7 +12,7 @@ var lcss = function (X, Y) {
             }
             if (i === 0 || j === 0)
                 table[i][j] = 0;
-            else if (X.charAt(i - 1) === Y.charAt(j - 1)) {
+            else if (X[i - 1] === Y[j - 1]) {
                 table[i][j] = table[i - 1][j - 1] + 1;
                 result = Math.max(result, table[i][j]);
             } else {
@@ -36,7 +36,7 @@ var lcss2 = function (X, Y) {
             }
             if (i === 0 || j === 0)
                 table[i][j] = 0;
-            else if (X.charAt(i - 1) === Y.charAt(j - 1)) {
+            else if (X[i - 1] === Y[j - 1]) {
                 table[i][j] = table[i - 1][j - 1] + 1;
                 result = Math.max(result, table[i][j]);
             } else {
