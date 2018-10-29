@@ -1,0 +1,30 @@
+html,main {
+    margin: 0 px;
+    padding: 0 px;
+    border:0px solid;
+    border-radius:5px;
+    background:#eee;
+}
+#home-content {
+    margin: auto;
+    padding: 0 px;
+    background-color: #ffffff
+    
+}
+#slogan {
+    margin: auto;
+}
+h1{
+    font-family: Slabo,sans-serif;
+    color: #000000;
+    text-align: center;
+    font-size: 48px;
+    font-weight: 200;
+}
+p {
+    color: #aeaeae;
+    font-family: Miriam Libre,sans-serif;
+    font-size: 21px;
+    margin-bottom: 30px;
+    text-align: center;
+}
