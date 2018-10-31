@@ -1,0 +1,32 @@
+.background {
+    margin: 0 px;
+    padding: 0 px;
+    border:0px solid;
+    border-radius:5px;
+    background-image: url("https://www.innosight.com/wp-content/uploads/2017/04/Cloud-Computing-Transparent-Overlay-Black.jpg");
+    background-attachment: fixed;
+    background-size: cover;
+}
+#home-content {
+    margin: auto;
+    padding: 0 px;
+    background-color: #ffffff
+    
+}
+h1{
+    font-family: Slabo,sans-serif;
+    color: #000000;
+    text-align: center;
+    font-size: 48px;
+    font-weight: 200;
+}
+p {
+    color: #aeaeae;
+    font-family: Miriam Libre,sans-serif;
+    font-size: 21px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+.h-500px {
+    height: 500px;
+  }
