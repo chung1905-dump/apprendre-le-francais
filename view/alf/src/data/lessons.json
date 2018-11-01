@@ -1,42 +1,58 @@
 [
   {
-    "title": "A lotel",
+    "id": "1",
     "level": "A1",
-    "url": "http://youtube.com/ahahha"
+    "title": "C'est l'Halloween",
+    "url": "listening/cest-lhalloween",
+    "youtube_url": "https://www.youtube.com/watch?v=XqcnxnEn2ME"
   },
   {
+    "id": "2",
+    "level": "A2",
+    "title": "À l'hôtel",
+    "url": "listening/a-lhotel",
+    "youtube_url": "https://www.youtube.com/watch?v=j23PZlfQuN4"
+  },
+  {
+    "id": "3",
+    "level": "B1",
+    "title": "Achats dans une grande surface",
+    "url": "",
+    "youtube_url": "https://www.youtube.com/watch?v=lKHl7RsJ3wc"
+  },
+  {
+    "id": "4",
+    "level": "B2",
     "title": "Au restaurant",
+    "url": "listening/au-restaurant",
+    "youtube_url": "https://www.youtube.com/watch?v=b7yEUEw3UOo"
+  },
+  {
+    "id": "5",
     "level": "A1",
-    "url": "http://youtube.com/bbb"
+    "title": "Bonjour, bonjour !",
+    "url": "listening/bonjour-bonjour",
+    "youtube_url": "https://www.youtube.com/watch?v=atNkI6QFZ50"
   },
   {
-    "title": "A lotel",
+    "id": "6",
     "level": "A2",
-    "url": "http://youtube.com/ahahha"
+    "title": "Dîner en ville",
+    "url": "listening/diner-en-ville",
+    "youtube_url": "https://www.youtube.com/watch?v=0w0BrI0_vlU"
   },
   {
-    "title": "Au restaurant",
-    "level": "A2",
-    "url": "http://youtube.com/bbb"
-  },
-  {
-    "title": "A lotel",
+    "id": "7",
     "level": "B1",
-    "url": "http://youtube.com/ahahha"
+    "title": "Le petit-déjeuner et le goûter",
+    "url": "le-petit-dejeuner-et-le-gouter",
+    "youtube_url": "https://www.youtube.com/watch?v=F9x9sBEyGyA"
   },
   {
-    "title": "Au restaurant",
-    "level": "B1",
-    "url": "http://youtube.com/bbb"
-  },
-  {
-    "title": "A lotel",
+    "id": "8",
     "level": "B2",
-    "url": "http://youtube.com/ahahha"
-  },
-  {
-    "title": "Au restaurant",
-    "level": "B2",
-    "url": "http://youtube.com/bbb"
+    "title": "Advent",
+    "url": "listening/advent",
+    "youtube_youtube_url": "https://www.youtube.com/watch?v=H3Mt2WQemEk"
   }
 ]
