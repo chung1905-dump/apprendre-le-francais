@@ -1,13 +1,14 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 
 class Header extends Component {
   render() {
-    const { levels } = this.props
+    const {levels} = this.props;
 
     let levelDropDown = levels.map((level) => {
       return (
         <li className="nav-item dropdown">
-          <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+             aria-haspopup="true" aria-expanded="false">
             Level {level}
           </a>
           <div className="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -15,9 +16,8 @@ class Header extends Component {
             <a className="dropdown-item" href="#">Au restaurant</a>
           </div>
         </li>
-      )
-
-    })
+      );
+    });
 
     return (
       <div className="container">
@@ -25,8 +25,10 @@ class Header extends Component {
           <h1>Lawless French</h1>
           <nav className="navbar navbar-expand-lg navbar-light bg-light">
             <a className="navbar-brand" href="#">Home</a>
-            <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-              <span className="navbar-toggler-icon" />
+            <button className="navbar-toggler" type="button" data-toggle="collapse"
+                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="Toggle navigation">
+              <span className="navbar-toggler-icon"/>
             </button>
             <div className="collapse navbar-collapse" id="navbarSupportedContent">
               <ul className="navbar-nav mr-auto">
