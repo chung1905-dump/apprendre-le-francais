@@ -7,9 +7,10 @@ import Footer from './components/Footer';
 
 class App extends Component {
   render() {
+    let levels = ["A1","A2","B1","B2"]
     return (
       <div className="App">
-        <Header/>
+        <Header levels={levels}/>
         <HomeContent/>
         <Footer/>
       </div>
