@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import Lessons from "../data/lessons";
+import {Link} from 'react-router-dom';
 
 class Header extends Component {
   // need sort by levels after reduce
@@ -31,7 +32,7 @@ class Header extends Component {
           <div className="dropdown-menu" aria-labelledby="navbarDropdown">
             {level.lessons.map((lesson) => {
               return (
-                <a key={lesson.id} className="dropdown-item" href={lesson.url}>{lesson.title}</a>
+                <Link key={lesson.id} className="dropdown-item" to={`/listening/${lesson.url}`}>{lesson.title}</Link>
               );
             })}
           </div>
@@ -44,7 +45,7 @@ class Header extends Component {
         <div className="jumbotron">
           <h1>Lawless French</h1>
           <nav className="navbar navbar-expand-lg navbar-light bg-light">
-            <a className="navbar-brand" href="#">Home</a>
+            <Link to="/" className="navbar-brand" href="#">Home</Link>
             <button className="navbar-toggler" type="button" data-toggle="collapse"
                     data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                     aria-label="Toggle navigation">
