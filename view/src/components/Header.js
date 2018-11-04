@@ -25,6 +25,7 @@ class Header extends Component {
       let level = this.levels[key];
       return (
         <li key={key} className="nav-item dropdown">
+          {/* eslint-disable-next-line */}
           <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
              aria-haspopup="true" aria-expanded="false">
             {level.title}
@@ -57,9 +58,11 @@ class Header extends Component {
               </ul>
               <ul className="navbar-nav ml-auto">
                 <li className="nav-item">
+                  {/* eslint-disable-next-line */}
                   <a className="nav-link" href="#"><strong>Sign Up</strong></a>
                 </li>
                 <li className="nav-item">
+                  {/* eslint-disable-next-line */}
                   <a className="nav-link" href="#"><strong>Login</strong></a>
                 </li>
               </ul>
