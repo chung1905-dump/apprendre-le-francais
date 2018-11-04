@@ -9,14 +9,12 @@ class SignUp extends Component {
       data[key] = value;
     });
 
-    console.log(data);
-
     fetch('/users', {
       method: "POST",
       headers: {
         'Content-Type': 'application/json'
       },
-      body: data
+      body: JSON.stringify(data)
     }).then(function (res) {
       console.log(res);
     });
@@ -37,11 +35,11 @@ class SignUp extends Component {
           </div>
           <div>
             <label htmlFor="psw"><b>Password</b></label>
-            <input type="password" placeholder="Enter Password" name="psw" required/>
+            <input type="password" placeholder="Enter Password" name="pwd" required/>
           </div>
           <div>
             <label htmlFor="psw-repeat"><b>Repeat Password</b></label>
-            <input type="password" placeholder="Repeat Password" name="psw-repeat" required/>
+            <input type="password" placeholder="Repeat Password" name="pwd-repeat" required/>
           </div>
           <div className="clearfix">
             <button type="button" className="cancelbtn">Cancel</button>
