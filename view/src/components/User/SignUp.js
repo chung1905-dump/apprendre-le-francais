@@ -3,7 +3,14 @@ import React, {Component} from 'react';
 class SignUp extends Component {
   static handleSubmit(e) {
     e.preventDefault();
-    const data = new FormData(e.target);
+    const formData = new FormData(e.target);
+    let data = {};
+    formData.forEach(function (value, key) {
+      data[key] = value;
+    });
+
+    console.log(data);
+
     fetch('/users', {
       method: "POST",
       headers: {
@@ -25,8 +32,8 @@ class SignUp extends Component {
             <hr/>
           </div>
           <div>
-            <label htmlFor="email"><b>Email</b></label>
-            <input type="text" placeholder="Enter Email" name="email" required/>
+            <label htmlFor="user"><b>Username</b></label>
+            <input type="text" placeholder="Enter Username" name="username" required/>
           </div>
           <div>
             <label htmlFor="psw"><b>Password</b></label>
