@@ -5,8 +5,6 @@ var usersRouter = require('./routes/users');
 
 var app = express();
 
-app.use(express.json());
-
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
