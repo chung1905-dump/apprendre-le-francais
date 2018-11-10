@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
-import Lessons from "../data/lessons";
 import {Link} from 'react-router-dom';
+import Lessons from "../data/lessons";
+import UserNavbar from './User/Navbar';
 
 class Header extends Component {
   // need sort by levels after reduce
@@ -56,16 +57,7 @@ class Header extends Component {
               <ul className="navbar-nav mr-auto">
                 {levelDropDown}
               </ul>
-              <ul className="navbar-nav ml-auto">
-                <li className="nav-item">
-                  {/* eslint-disable-next-line */}
-                  <Link to="/user/signup" className="nav-link" href="#"><strong>Sign Up</strong></Link>
-                </li>
-                <li className="nav-item">
-                  {/* eslint-disable-next-line */}
-                  <a className="nav-link" href="#"><strong>Login</strong></a>
-                </li>
-              </ul>
+              <UserNavbar/>
             </div>
           </nav>
         </div>

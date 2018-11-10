@@ -3,10 +3,13 @@ var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+var usersRouter = require('./routes/user/signup');
 
 var app = express();
-mongoose.connect('mongodb://localhost/alf', {useNewUrlParser: true});
+mongoose.connect('mongodb://localhost/alf', {
+  useCreateIndex: true,
+  useNewUrlParser: true
+});
 app.use(bodyParser.json());
 
 app.use('/', indexRouter);
