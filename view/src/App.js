@@ -7,6 +7,7 @@ import Footer from './components/Footer';
 import HomeContent from './components/HomeContent';
 import LearnContent from './components/LearnContent';
 import SignUp from './components/User/SignUp';
+import Login from './components/User/Login';
 
 class App extends Component {
 
@@ -18,6 +19,7 @@ class App extends Component {
           <Route exact path="/" component={HomeContent}/>
           <Route path="/listening/:name" component={LearnContent}/>
           <Route path="/user/:action" component={SignUp}/>
+          <Route path="/login" component={Login}/>
           <Footer/>
         </div>
       </Router>
