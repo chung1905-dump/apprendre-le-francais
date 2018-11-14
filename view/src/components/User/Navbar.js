@@ -7,11 +7,11 @@ class Navbar extends Component {
       <ul className="navbar-nav ml-auto">
         <li className="nav-item">
           {/* eslint-disable-next-line */}
-          <Link to="/user/signup" className="nav-link" href="#"><strong>Sign Up</strong></Link>
+          <Link to="/user/signup" className="nav-link"><strong>Sign Up</strong></Link>
         </li>
         <li className="nav-item">
           {/* eslint-disable-next-line */}
-          <a className="nav-link" href="#"><strong>Login</strong></a>
+          <Link to="/login" className="nav-link"><strong>Login</strong></Link>
         </li>
       </ul>
     );
