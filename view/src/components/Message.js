@@ -3,17 +3,20 @@ import React, {Component} from 'react';
 class Message extends Component {
   constructor(props) {
     super(props);
-    this.message = 'haha';
+    this.state = {
+      message: "haha"
+    };
   }
 
-  setMessage(a) {
-    this.message = a;
+  componentWillReceiveProps(nextProps){
+    if(nextProps.message !== this.props.message)
   }
+
 
   render() {
     return (
       <div>
-        <span>{this.message}</span>
+        <span>{this.state.message}</span>
       </div>
     );
   }
