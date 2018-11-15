@@ -22,31 +22,33 @@ class SignUp extends Component {
 
   render() {
     return (
-      <form style={{border: '1px solid #ccc'}} onSubmit={SignUp.handleSubmit}>
-        <div className="container">
-          <div>
-            <h1>Sign Up</h1>
-            <p>Please fill in this form to create an account.</p>
-            <hr/>
+      <div>
+        <form style={{border: '1px solid #ccc'}} onSubmit={SignUp.handleSubmit}>
+          <div className="container">
+            <div>
+              <h1>Sign Up</h1>
+              <p>Please fill in this form to create an account.</p>
+              <hr/>
+            </div>
+            <div>
+              <label htmlFor="user"><b>Username</b></label>
+              <input type="text" placeholder="Enter Username" name="username" required/>
+            </div>
+            <div>
+              <label htmlFor="psw"><b>Password</b></label>
+              <input type="password" placeholder="Enter Password" name="pwd" required/>
+            </div>
+            <div>
+              <label htmlFor="psw-repeat"><b>Repeat Password</b></label>
+              <input type="password" placeholder="Repeat Password" name="pwd-repeat" required/>
+            </div>
+            <div className="clearfix">
+              <button type="button" className="cancelbtn">Cancel</button>
+              <button type="submit" className="signupbtn">Sign Up</button>
+            </div>
           </div>
-          <div>
-            <label htmlFor="user"><b>Username</b></label>
-            <input type="text" placeholder="Enter Username" name="username" required/>
-          </div>
-          <div>
-            <label htmlFor="psw"><b>Password</b></label>
-            <input type="password" placeholder="Enter Password" name="pwd" required/>
-          </div>
-          <div>
-            <label htmlFor="psw-repeat"><b>Repeat Password</b></label>
-            <input type="password" placeholder="Repeat Password" name="pwd-repeat" required/>
-          </div>
-          <div className="clearfix">
-            <button type="button" className="cancelbtn">Cancel</button>
-            <button type="submit" className="signupbtn">Sign Up</button>
-          </div>
-        </div>
-      </form>
+        </form>
+      </div>
     );
   }
 }

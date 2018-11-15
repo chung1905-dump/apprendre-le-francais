@@ -11,6 +11,16 @@ var userSchema = new Schema({
   }
 });
 
+function hashCode(str) {
+  return str.split('').reduce((prevHash, currVal) =>
+    (((prevHash << 5) - prevHash) + currVal.charCodeAt(0)) | 0, 0);
+}
+
+userSchema.pre('save', function (next) {
+  // this.password = hashCode(this.password);
+  next();
+});
+
 // the schema is useless so far
 // we need to create a model using it
 var User = mongoose.model('User', userSchema);

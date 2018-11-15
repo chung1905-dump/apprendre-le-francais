@@ -8,14 +8,15 @@ import HomeContent from './components/HomeContent';
 import LearnContent from './components/LearnContent';
 import SignUp from './components/User/SignUp';
 import Login from './components/User/Login';
+import MessageManager from './components/Message';
 
 class App extends Component {
-
   render() {
     return (
       <Router>
         <div className="App">
           <Header/>
+          <MessageManager/>
           <Route exact path="/" component={HomeContent}/>
           <Route path="/listening/:name" component={LearnContent}/>
           <Route path="/user/:action" component={SignUp}/>
