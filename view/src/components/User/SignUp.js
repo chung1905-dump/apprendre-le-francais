@@ -22,31 +22,35 @@ class SignUp extends Component {
 
   render() {
     return (
-      <form style={{border: '1px solid #ccc'}} onSubmit={SignUp.handleSubmit}>
-        <div className="container">
-          <div>
-            <h1>Sign Up</h1>
-            <p>Please fill in this form to create an account.</p>
-            <hr/>
-          </div>
-          <div>
-            <label htmlFor="user"><b>Username</b></label>
-            <input type="text" placeholder="Enter Username" name="username" required/>
-          </div>
-          <div>
-            <label htmlFor="psw"><b>Password</b></label>
-            <input type="password" placeholder="Enter Password" name="pwd" required/>
-          </div>
-          <div>
-            <label htmlFor="psw-repeat"><b>Repeat Password</b></label>
-            <input type="password" placeholder="Repeat Password" name="pwd-repeat" required/>
-          </div>
-          <div className="clearfix">
-            <button type="button" className="cancelbtn">Cancel</button>
-            <button type="submit" className="signupbtn">Sign Up</button>
+      <div className="container-fluid bg-light py-3">
+        <div className="row">
+          <div className="col-md-6 mx-auto">
+            <div className="card card-body">
+              <h3 className="text-center mb-4">Sign-up</h3>
+              <div className="alert alert-danger">
+                <a className="close font-weight-light" data-dismiss="alert">×</a>Password is too short.
+              </div>
+              <fieldset>
+                <div className="form-group has-error">
+                  <input className="form-control input-lg" placeholder="E-mail Address" name="email" type="text" />
+                </div>
+                <div className="form-group has-success">
+                  <input className="form-control input-lg" placeholder="Password" name="password" defaultValue type="password" />
+                </div>
+                <div className="form-group has-success">
+                  <input className="form-control input-lg" placeholder="Confirm Password" name="password" defaultValue type="password" />
+                </div>
+                <div className="checkbox">
+                  <label className="small">
+                    <input name="terms" type="checkbox" />I have read and agree to the <a>terms of service</a>
+                  </label>
+                </div>
+                <input className="btn btn-lg btn-primary btn-block" defaultValue="Sign Me Up" type="submit" />
+              </fieldset>
+            </div>
           </div>
         </div>
-      </form>
+      </div>
     );
   }
 }
