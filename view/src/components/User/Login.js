@@ -37,22 +37,27 @@ class Login extends Component {
             content = <small className="text-danger">{error}</small>
         }
 
-        return (
-            <div className="container">
-                <form onSubmit={this.handleSubmit}>
-                    <div className="form-group">
-                        <label>Username</label>
-                        <input onChange={this.onChange} name="username" type="text" className="form-control" placeholder="Enter username"/>
-                        <small className="form-text text-muted">We'll never share your account with anyone else.</small>
-                    </div>
-                    <div className="form-group">
-                        <label>Password</label>
-                        <input onChange={this.onChange} name="password" type="password" className="form-control" placeholder="Password" />
-                        {content}
-                    </div>
-                    <button type="submit" className="btn btn-primary">Submit</button>
-                </form>
+        return (   
+        <div className="container-fluid bg-light py-3"> 
+        <form onSubmit={this.handleSubmit}>
+        <div className="row">
+          <div className="col-md-6 mx-auto">
+            <div className="card card-body">
+              <h3 className="text-center mb-4">Login</h3>
+              <fieldset>
+                <div className="form-group has-error">
+                  <input onChange={this.onChange} className="form-control input-lg" placeholder="Username" name="username" type="text" />
+                </div>
+                <div className="form-group has-success">
+                  <input onChange={this.onChange} className="form-control input-lg" placeholder="Password" name="password" defaultValue type="password" />
+                </div>
+                <button type="submit" className="btn btn-primary">Login</button>
+              </fieldset>
             </div>
+          </div>
+        </div>
+        </form>
+        </div>
         );
     }
 }
