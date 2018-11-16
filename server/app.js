@@ -13,7 +13,7 @@ var levelsRouter = require('./routes/levels');
 var levelRouter = require('./routes/level');
 
 var app = express();
-mongoose.connect('mongodb://localhost/alf', {
+mongoose.connect('mongodb://mongodb/alf', {
   useCreateIndex: true,
   useNewUrlParser: true
 });

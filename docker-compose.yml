@@ -1,0 +1,31 @@
+version: '2'
+services:
+  mongodb:
+    container_name: mongodb
+    image: "mongo:4"
+    ports:
+     - "27017:27017"
+  backend:
+    container_name: server
+    build:
+      context: ./server/
+      args:
+        USER_NAME: 'chung'
+        UID: '1000'
+    volumes:
+      - ./server:/usr/src/app
+      - ./view/public/storage:/usr/src/view/public/storage
+      - /usr/src/app/node_modules
+    depends_on:
+      - mongodb
+  frontend:
+    container_name: view
+    build: ./view/
+    ports:
+      - "3000:3000"
+      - "35729:35729"
+    volumes:
+      - ./view:/usr/src/app
+      - /usr/src/app/node_modules
+    depends_on:
+      - backend
