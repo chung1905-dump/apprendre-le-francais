@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import Message from '../Message'
+import Message from '../Message';
 
 class Login extends Component {
   constructor() {
@@ -47,7 +47,10 @@ class Login extends Component {
             <label>Password</label>
             <input onChange={this.onChange} name="password" type="password" className="form-control"
                    placeholder="Password"/>
-            <Message  message={error}/>
+            { error 
+              ? <Message message={error}/>
+              : null 
+            }
           </div>
           <button type="submit" className="btn btn-primary">Submit</button>
         </form>

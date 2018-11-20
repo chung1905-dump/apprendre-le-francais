@@ -4,19 +4,14 @@ class Message extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      message: "haha"
+      message: this.props.message
     };
   }
-
-  componentWillReceiveProps(nextProps){
-    if(nextProps.message !== this.props.message)
-  }
-
 
   render() {
     return (
       <div>
-        <span>{this.state.message}</span>
+        <span className="text-danger">{this.state.message}</span>
       </div>
     );
   }
