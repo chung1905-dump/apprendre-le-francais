@@ -1,0 +1,17 @@
+img {
+    padding: 20px;
+}
+
+.jumbotron {
+    background-color: white;
+}
+.site-description {
+    color: #beb9b4;
+    font-size: 16px;
+    font-weight: 300;
+    font-family: Raleway,Arial,Helvetica,sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    line-height: 1.2;
+    padding: 5px;
+}

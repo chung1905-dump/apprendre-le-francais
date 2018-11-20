@@ -22,7 +22,7 @@ class SignUp extends Component {
 
   render() {
     return (
-      <div className="container-fluid bg-light py-3">
+      <div className="container-fluid bg-white py-3">
         <form onSubmit={SignUp.handleSubmit}>
         <div className="row">
           <div className="col-md-6 mx-auto">

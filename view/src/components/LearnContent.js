@@ -54,6 +54,7 @@ class LearnContent extends Component {
     return result;
   };
 
+
   checkAnswer() {
     let maxPoint = 10,
       point,
@@ -62,7 +63,9 @@ class LearnContent extends Component {
 
     point = this.lcss(userAnswer, correctAnswer);
 
-    maxPoint = correctAnswer.length;
+    point = point / correctAnswer.length * maxPoint;
+    let n = parseFloat(point);
+    point = Math.round(n * 100)/ 100;
 
     this.setState({point: point + '/' + maxPoint});
 
@@ -83,6 +86,7 @@ class LearnContent extends Component {
   }
 
   render() {
+    this.question = this.prepareData();
     return (
       <div className="container">
         <div className="text-center">

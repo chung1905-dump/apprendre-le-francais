@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import Lessons from "../data/lessons";
 import UserNavbar from './User/Navbar';
+import "../css/header.css"
 
 class Header extends Component {
   // need sort by levels after reduce
@@ -45,7 +46,8 @@ class Header extends Component {
     return (
       <div className="container">
         <div className="jumbotron">
-          <h1>Lawless French</h1>
+        <img src="https://www.lawlessfrench.com/wp-content/uploads/logo.png" alt="Lawless French" />
+        <div class="site-description">Learn Frencais For The Future</div>
           <nav className="navbar navbar-expand-lg navbar-light bg-light">
             <Link to="/" className="navbar-brand" href="#">Home</Link>
             <button className="navbar-toggler" type="button" data-toggle="collapse"
