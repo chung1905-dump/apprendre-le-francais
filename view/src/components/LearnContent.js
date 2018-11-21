@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import Lessons from "../data/lessons";
 import Answers from "../data/answers";
+import "../css/learn-content.css"
 
 class LearnContent extends Component {
   constructor(props) {
@@ -32,8 +33,10 @@ class LearnContent extends Component {
 
   // noinspection JSMethodCanBeStatic
   lcss(X, Y) {
-    let result = 0,
-      table = {};
+    let maxOccurs = 0,
+      table = {},
+      firstOccurOnY = 0,
+      firstOccurOnX = 0;
 
     for (let i = 0; i <= X.length; i++) {
       for (let j = 0; j <= Y.length; j++) {
@@ -44,14 +47,22 @@ class LearnContent extends Component {
           table[i][j] = 0;
         else if (X[i - 1] === Y[j - 1]) {
           table[i][j] = table[i - 1][j - 1] + 1;
-          result = Math.max(result, table[i][j]);
+          if (table[i][j] > maxOccurs) {
+            maxOccurs = table[i][j];
+            firstOccurOnY = j - maxOccurs;
+            firstOccurOnX = i - maxOccurs;
+          }
         } else {
-          table[i][j] = Math.max(table[i - 1][j] || 0, table[i][j - 1] || 0);
+          table[i][j] = 0;
         }
       }
     }
 
-    return result;
+    return {
+      maxOccurs,
+      firstOccurOnY,
+      firstOccurOnX
+    };
   };
 
 
@@ -61,27 +72,59 @@ class LearnContent extends Component {
       userAnswer = this.parseStr(this.state.userAnswer),
       correctAnswer = this.parseStr(this.question.correctAns);
 
-    point = this.lcss(userAnswer, correctAnswer);
+    let result = this.lcss(userAnswer, correctAnswer);
 
+    {
+      let mo = result.maxOccurs,
+        foU = result.firstOccurOnX,
+        foA = result.firstOccurOnY;
+      let a = [], b = [], c = [], d = [], e = [];
+
+      for (let i = 0; i < foU; i++) {
+        a.push(userAnswer[i]);
+      }
+      for (let i = 0; i < foA; i++) {
+        b.push(correctAnswer[i]);
+      }
+      for (let i = foA; i < foA + mo; i++) {
+        c.push(correctAnswer[i]);
+      }
+      for (let i = foU + mo; i < userAnswer.length; i++) {
+        d.push(userAnswer[i]);
+      }
+      for (let i = foA + mo; i < correctAnswer.length; i++) {
+        e.push(correctAnswer[i]);
+      }
+
+      let html = '';
+      console.log(a);
+      console.log(b);
+      console.log(c);
+      console.log(d);
+      console.log(e);
+      html += ' <span class="wrong">' + a.join(' ') + ' </span>';
+      html += ' <span class="fixed">' + b.join(' ') + '</span>';
+      html += ' <span class="correct">' + c.join(' ') + '</span>';
+      html += ' <span class="wrong">' + d.join(' ') + '</span>';
+      html += ' <span class="fixed">' + e.join(' ') + '</span>';
+      this.setState({
+        fixAns: html
+      });
+    }
+
+    point = result.maxOccurs;
     point = point / correctAnswer.length * maxPoint;
-    let n = parseFloat(point);
-    point = Math.round(n * 100)/ 100;
+    point = Math.round(point * 100) / 100;
 
     this.setState({point: point + '/' + maxPoint});
-
-    // console.log(userAnswer);
-    // console.log(correctAnswer);
-    // console.log(point);
   };
 
   parseStr(str) {
-    // console.log(str);
+    str = str.replace(/\r?\n|\r/g, ' ');
     str = str.toLowerCase().replace(/[^a-z\s]+/g, '');
-    // console.log(str);
     str = str.split(' ');
-    // console.log(str);
     str = str.filter(s => s.replace(/[^a-z]+/g, '').length > 0);
-    // console.log(str);
+    console.log(str);
     return str;
   }
 
@@ -103,6 +146,8 @@ class LearnContent extends Component {
               </div>
             </div>
             <button onClick={this.checkAnswer.bind(this)} type="button" className="btn btn-success">Submit</button>
+          </div>
+          <div dangerouslySetInnerHTML={{__html: this.state.fixAns}}>
           </div>
           <div>
             <span>Your point: {this.state.point}</span>

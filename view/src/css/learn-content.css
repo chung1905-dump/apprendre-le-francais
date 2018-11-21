@@ -1,0 +1,11 @@
+.wrong {
+    text-decoration: line-through;
+    color: red;
+}
+
+.fixed {
+    color: blue;
+}
+
+.correct {
+}

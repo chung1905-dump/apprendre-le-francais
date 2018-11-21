@@ -47,7 +47,7 @@ class Header extends Component {
       <div className="container">
         <div className="jumbotron">
         <img src="https://www.lawlessfrench.com/wp-content/uploads/logo.png" alt="Lawless French" />
-        <div class="site-description">Learn Frencais For The Future</div>
+        <div className="site-description">Learn Frencais For The Future</div>
           <nav className="navbar navbar-expand-lg navbar-light bg-light">
             <Link to="/" className="navbar-brand" href="#">Home</Link>
             <button className="navbar-toggler" type="button" data-toggle="collapse"
