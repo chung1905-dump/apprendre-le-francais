@@ -6,6 +6,7 @@ class Login extends Component {
         this.state = {
             username: "",
             password: "",
+            success:"",
             errors: ""
         };
     }
@@ -19,9 +20,25 @@ class Login extends Component {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(this.state)
-        }).then((res) => res.json())
-        .then(data => this.setState({errors: data}))
-        .catch(err => console.log(err))
+        }).then((res) => {
+            res.json()
+                .then(data =>{
+                    if(data.success) this.setState({success: data.success})
+                    else this.setState({errors: data})
+
+                    let auth = [this.state.username, this.state.success]
+
+                    window.localStorage.setItem('auth', auth)
+                })
+                .then(()=>{
+                    if(this.state.success){
+                        setTimeout(()=>{
+                          this.props.history.push('/');
+                        },2000)
+                      }
+                })
+                .catch(err => console.log(err))
+        })
     }
 
     onChange = (e) => {
@@ -31,10 +48,10 @@ class Login extends Component {
     }
 
     render() {
-        const error = this.state.errors.message
+        const {errors} = this.state
         let content;
-        if(error){
-            content = <small className="text-danger">{error}</small>
+        if(errors){
+            content = <small className="text-danger">{errors.message}</small>
         }
 
         return (   
@@ -45,11 +62,12 @@ class Login extends Component {
             <div className="card card-body">
               <h3 className="text-center mb-4">Login</h3>
               <fieldset>
+                {content}
                 <div className="form-group has-error">
                   <input onChange={this.onChange} className="form-control input-lg" placeholder="Username" name="username" type="text" />
                 </div>
                 <div className="form-group has-success">
-                  <input onChange={this.onChange} className="form-control input-lg" placeholder="Password" name="password" defaultValue type="password" />
+                  <input onChange={this.onChange} className="form-control input-lg" placeholder="Password" name="password" type="password" />
                 </div>
                 <button type="submit" className="btn btn-primary">Login</button>
               </fieldset>
