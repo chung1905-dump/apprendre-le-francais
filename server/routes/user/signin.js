@@ -1,6 +1,8 @@
 var express = require('express');
 var User = require('../../model/user');
 var router = express.Router();
+var jwt = require('jsonwebtoken');
+var keys = require('../../config/keys')
 
 router.post('/', function (req, res, next) {
     const body = req.body;
@@ -16,14 +18,21 @@ router.post('/', function (req, res, next) {
                     res.status(404).send({
                         message: errors.message
                     });
-                }else if (password !== user.password) {
+                } else if (password !== user.password) {
                     errors.message = "Password incorrect";
                     res.status(400).send({
                         message: errors.message
                     });
                 } else {
-                    res.json({
-                        success: true
+                    const payload = {
+                        name: user.username
+                    };
+
+                    jwt.sign(payload, keys.secretKey, { expiresIn: 60 * 60 * 24 }, (err, token) => {
+                        res.json({
+                            success: true,
+                            token: 'Bearer ' + token
+                        });
                     })
                 }
             })
