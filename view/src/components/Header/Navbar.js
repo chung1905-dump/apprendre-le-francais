@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import {Link} from 'react-router-dom';
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 class Navbar extends Component {
   constructor() {
@@ -15,7 +15,8 @@ class Navbar extends Component {
       headers: {
         'Content-Type': 'application/json',
         'Authorization': this.getToken()
-      }
+      },
+      body: JSON.stringify({ token: this.getToken() })
     }).then(res => res.json().then(this.onSuccess.bind(this)))
       .catch(err => console.log(err));
   }
@@ -29,6 +30,7 @@ class Navbar extends Component {
 
   getToken = function () {
     //@todo: Get token here
+    console.log(localStorage.getItem('alf_user_token'))
     return localStorage.getItem('alf_user_token');
   };
 

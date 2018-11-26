@@ -19,8 +19,13 @@ class Login extends Component {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(this.state)
-        }).then((res) => res.json())
-        .then(data => this.setState({errors: data}))
+        }).then((res) => {
+            res.json()
+                .then(data => {
+                    this.setState({errors: data.message});
+                    localStorage.setItem('alf_user_token',data.token)
+                })
+        })
         .catch(err => console.log(err))
     }
 
@@ -31,7 +36,7 @@ class Login extends Component {
     }
 
     render() {
-        const error = this.state.errors.message
+        const error = this.state.errors
         let content;
         if(error){
             content = <small className="text-danger">{error}</small>
@@ -45,6 +50,7 @@ class Login extends Component {
             <div className="card card-body">
               <h3 className="text-center mb-4">Login</h3>
               <fieldset>
+                {content ? content : null}
                 <div className="form-group has-error">
                   <input onChange={this.onChange} className="form-control input-lg" placeholder="Username" name="username" type="text" />
                 </div>

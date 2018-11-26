@@ -31,7 +31,7 @@ router.post('/', function (req, res, next) {
                     jwt.sign(payload, keys.secretKey, { expiresIn: 60 * 60 * 24 }, (err, token) => {
                         res.json({
                             success: true,
-                            token: 'Bearer ' + token
+                            token: token
                         });
                     })
                 }
