@@ -4,9 +4,9 @@ var router = express.Router();
 
 router.post('/', function (req, res, next) {
     const body = req.body;
-    const username = body.username
-    const password = body.password
-    const errors = {}
+    const username = body.username;
+    const password = body.password;
+    const errors = {};
     try {
         // validateData(body);
         User.findOne({ username })

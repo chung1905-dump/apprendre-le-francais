@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import Lessons from "../data/lessons";
-import UserNavbar from './User/Navbar';
+import UserNavbar from './Header/Navbar';
 import "../css/header.css"
 
 class Header extends Component {
