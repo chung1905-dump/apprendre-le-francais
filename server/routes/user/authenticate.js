@@ -12,7 +12,7 @@ router.post('/', function (req, res) {
     jwt.verify(body.token, keys.secretKey, (err, decoded) => {
       if (err) {
         throw new Error('Invalid token');
-      } else {
+      } else if (decoded) {
         if (Date.now() < decoded.exp * 1000) {
           return res.json({
             success: true,
@@ -21,6 +21,8 @@ router.post('/', function (req, res) {
         } else {
           throw new Error('Token expired');
         }
+      } else {
+        throw new Error('Invalid token');
       }
     });
   } catch (e) {

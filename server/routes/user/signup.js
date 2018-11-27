@@ -14,6 +14,9 @@ router.post('/', function (req, res, next) {
 
   const body = req.body;
   try {
+    if (req.loggedUser) {
+      throw new Error('User Logged In.');
+    }
     validateData(body);
     let newUser = User({
       username: body.username,

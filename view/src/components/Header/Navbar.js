@@ -10,6 +10,9 @@ class Navbar extends Component {
       username: ''
     };
 
+    this.fetchAuth();
+    // bad way to refresh navbar, need improve
+    window.rsNavbar = this.fetchAuth.bind(this);
   }
 
   fetchAuth = function () {
@@ -42,11 +45,14 @@ class Navbar extends Component {
   };
 
   clearToken = function () {
+    this.setState({
+      isLoggedIn: false,
+      username: ''
+    });
     return localStorage.clear('alf_user_token');
   };
 
   render() {
-    this.fetchAuth();
     if (this.state.isLoggedIn) {
       return (
         <ul className="navbar-nav ml-auto">
@@ -54,13 +60,14 @@ class Navbar extends Component {
             <span className="nav-link"><strong>Hello {this.state.username}</strong></span>
           </li>
           <li className="nav-item">
-            <a onClick={this.clearToken} href={'#'} className="nav-link"><strong>Logout</strong></a>
+            <a onClick={this.clearToken.bind(this)} href={'#'} className="nav-link"><strong>Logout</strong></a>
           </li>
         </ul>
       );
     }
     return (
       <ul className="navbar-nav ml-auto">
+        <div style={{display: 'none'}}>{this.state.username}</div>
         <li className="nav-item">
           <Link to="/user/signup" className="nav-link"><strong>Sign Up</strong></Link>
         </li>

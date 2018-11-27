@@ -1,6 +1,8 @@
 var express = require('express');
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
+var jwt = require('jsonwebtoken');
+var keys = require('./config/keys');
 
 var indexRouter = require('./routes/index');
 var signupRouter = require('./routes/user/signup');
@@ -14,6 +16,18 @@ mongoose.connect('mongodb://localhost/alf', {
 });
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
+
+app.use(function (req, res, next) {
+  const body = req.body;
+  if (body.token) {
+    jwt.verify(body.token, keys.secretKey, (err, decoded) => {
+      if (Date.now() < decoded.exp * 1000) {
+        req.loggedUser = decoded.name
+      }
+    });
+  }
+  next();
+});
 
 app.use('/', indexRouter);
 app.use('/signup', signupRouter);
