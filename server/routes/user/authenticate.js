@@ -1,20 +1,31 @@
 var express = require('express');
 var router = express.Router();
-var jwtDecode = require('jwt-decode')
+var jwt = require('jsonwebtoken');
+var keys = require('../../config/keys');
 
-router.post('/', function (req, res, next) {
+router.post('/', function (req, res) {
   try {
-    //@todo: Parse token here
     const body = req.body;
-    if (body.token) {
-      res.json({
-        success: true,
-        username: 'Test'
-      })
-    } else res.redirect('/login');
+    if (!body.token) {
+      throw new Error('Did not signed in');
+    }
+    jwt.verify(body.token, keys.secretKey, (err, decoded) => {
+      if (err) {
+        throw new Error('Invalid token');
+      } else {
+        if (Date.now() < decoded.exp) {
+          return res.json({
+            success: true,
+            username: decoded.name
+          });
+        } else {
+          throw new Error('Token expired');
+        }
+      }
+    });
   } catch (e) {
-    res.send({
-      status: false,
+    return res.send({
+      success: false,
       message: e.message
     });
   }

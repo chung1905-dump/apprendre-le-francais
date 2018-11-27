@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import React, {Component} from 'react';
+import {Link} from 'react-router-dom';
 
 class Navbar extends Component {
   constructor() {
@@ -16,21 +16,26 @@ class Navbar extends Component {
         'Content-Type': 'application/json',
         'Authorization': this.getToken()
       },
-      body: JSON.stringify({ token: this.getToken() })
+      body: JSON.stringify({token: this.getToken()})
     }).then(res => res.json().then(this.onSuccess.bind(this)))
       .catch(err => console.log(err));
   }
 
   onSuccess = function (body) {
-    this.setState({
-      isLoggedIn: true,
-      username: body.username
-    });
+    if (body.success) {
+      this.setState({
+        isLoggedIn: true,
+        username: body.username
+      });
+    } else {
+      this.setState({
+        isLoggedIn: false
+      });
+    }
   };
 
   getToken = function () {
     //@todo: Get token here
-    console.log(localStorage.getItem('alf_user_token'))
     return localStorage.getItem('alf_user_token');
   };
 

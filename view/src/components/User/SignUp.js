@@ -17,7 +17,7 @@ class SignUp extends Component {
       data[key] = value;
     });
 
-    fetch('/users', {
+    fetch('/signup', {
       method: "POST",
       headers: {
         'Content-Type': 'application/json'

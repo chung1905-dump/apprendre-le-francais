@@ -2,7 +2,7 @@ var express = require('express');
 var User = require('../../model/user');
 var router = express.Router();
 var jwt = require('jsonwebtoken');
-var keys = require('../../config/keys')
+var keys = require('../../config/keys');
 
 router.post('/', function (req, res, next) {
     const body = req.body;
