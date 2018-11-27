@@ -13,7 +13,7 @@ router.post('/', function (req, res) {
       if (err) {
         throw new Error('Invalid token');
       } else {
-        if (Date.now() < decoded.exp) {
+        if (Date.now() < decoded.exp * 1000) {
           return res.json({
             success: true,
             username: decoded.name

@@ -18,8 +18,8 @@ class App extends Component {
           <Header/>
           <Route exact path="/" component={HomeContent}/>
           <Route path="/listening/:name" component={LearnContent}/>
-          <Route path="/user/:action" component={SignUp}/>
-          <Route path="/login" component={Login}/>
+          <Route path="/user/signup" component={SignUp}/>
+          <Route path="/user/login" component={Login}/>
           <Footer/>
         </div>
       </Router>

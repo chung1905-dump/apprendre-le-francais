@@ -10,6 +10,9 @@ class Navbar extends Component {
       username: ''
     };
 
+  }
+
+  fetchAuth = function () {
     fetch('/authenticate', {
       method: "POST",
       headers: {
@@ -19,7 +22,7 @@ class Navbar extends Component {
       body: JSON.stringify({token: this.getToken()})
     }).then(res => res.json().then(this.onSuccess.bind(this)))
       .catch(err => console.log(err));
-  }
+  };
 
   onSuccess = function (body) {
     if (body.success) {
@@ -35,11 +38,15 @@ class Navbar extends Component {
   };
 
   getToken = function () {
-    //@todo: Get token here
     return localStorage.getItem('alf_user_token');
   };
 
+  clearToken = function () {
+    return localStorage.clear('alf_user_token');
+  };
+
   render() {
+    this.fetchAuth();
     if (this.state.isLoggedIn) {
       return (
         <ul className="navbar-nav ml-auto">
@@ -47,7 +54,7 @@ class Navbar extends Component {
             <span className="nav-link"><strong>Hello {this.state.username}</strong></span>
           </li>
           <li className="nav-item">
-            <Link to="/logout" className="nav-link"><strong>Logout</strong></Link>
+            <a onClick={this.clearToken} href={'#'} className="nav-link"><strong>Logout</strong></a>
           </li>
         </ul>
       );
@@ -58,7 +65,7 @@ class Navbar extends Component {
           <Link to="/user/signup" className="nav-link"><strong>Sign Up</strong></Link>
         </li>
         <li className="nav-item">
-          <Link to="/login" className="nav-link"><strong>Login</strong></Link>
+          <Link to="/user/login" className="nav-link"><strong>Login</strong></Link>
         </li>
       </ul>
     );
