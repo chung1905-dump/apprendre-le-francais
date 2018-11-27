@@ -60,6 +60,9 @@ class Navbar extends Component {
             <span className="nav-link"><strong>Hello {this.state.username}</strong></span>
           </li>
           <li className="nav-item">
+            <Link to="/user/upload" className="nav-link"><strong>Upload</strong></Link>
+          </li>
+          <li className="nav-item">
             <a onClick={this.clearToken.bind(this)} href={'#'} className="nav-link"><strong>Logout</strong></a>
           </li>
         </ul>

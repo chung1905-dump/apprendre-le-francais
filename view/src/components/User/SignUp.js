@@ -34,7 +34,7 @@ class SignUp extends Component {
         .then(() => {
           if (this.state.status) {
             setTimeout(() => {
-              this.props.history.push('/login')
+              this.props.history.push('/user/login')
             }, 2000)
           }
         })
@@ -43,7 +43,7 @@ class SignUp extends Component {
 
     if (this.state.status) {
       setTimeout(() => {
-        this.props.history.push('/login')
+        this.props.history.push('/user/login')
       }, 2000)
     }
   };
