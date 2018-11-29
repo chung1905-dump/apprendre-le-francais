@@ -1,6 +1,6 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import './App.css';
-import {BrowserRouter as Router, Route} from "react-router-dom"
+import { BrowserRouter as Router, Route } from "react-router-dom"
 
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -17,11 +17,11 @@ class App extends Component {
       <Router>
         <div className="App">
           <Header/>
-          <Route exact path="/" component={HomeContent}/>
-          <Route path="/listening/:name" component={LearnContent}/>
-          <Route path="/user/signup" component={SignUp}/>
-          <Route path="/user/login" component={Login}/>
-          <Route path="/user/upload" component={Upload}/>
+          <Route exact path="/" component={HomeContent} />
+          <Route path="/listening/:name" component={LearnContent} />
+          <Route path="/user/signup" component={SignUp} />
+          <Route path="/user/login" component={Login} />
+          <Route path="/user/upload" component={Upload} />
           <Footer/>
         </div>
       </Router>

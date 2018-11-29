@@ -6,6 +6,7 @@
     background-image: url("https://www.innosight.com/wp-content/uploads/2017/04/Cloud-Computing-Transparent-Overlay-Black.jpg");
     background-attachment: fixed;
     background-size: cover;
+    height: 400px;
 }
 
 #home-content {
@@ -31,5 +32,5 @@ p {
 }
 
 .h-500px {
-    height: 500px;
+    height: 400px;
 }

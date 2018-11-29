@@ -3,8 +3,8 @@ import "../css/home-content.css"
 class HomeContent extends Component {
     render() {
         return (
-            <div>
-                <div className="container background h-500px">
+            <div className="row justify-content-md-center">
+                <div className="container background ">
                     <div className="text-center">
                         <section className="home-content">
                             <div className="Slogan">
