@@ -21,7 +21,7 @@ app.use(function (req, res, next) {
   const body = req.body;
   if (body.token) {
     jwt.verify(body.token, keys.secretKey, (err, decoded) => {
-      if (Date.now() < decoded.exp * 1000) {
+      if (decoded !== undefined && Date.now() < decoded.exp * 1000) {
         req.loggedUser = decoded.name
       }
     });
