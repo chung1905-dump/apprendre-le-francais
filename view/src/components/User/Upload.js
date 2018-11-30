@@ -26,7 +26,7 @@ class Upload extends Component {
             <div className="form-group">
               <textarea className="form-control" id="Script" rows="3" placeholder="text here..."></textarea>
             </div>
-            <button type="button" class="btn btn-primary">Submit</button>
+            <button type="button" className="btn btn-primary">Submit</button>
           </form>
         </div>
       </div>
