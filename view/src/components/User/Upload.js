@@ -1,7 +1,21 @@
 import React, { Component } from 'react';
 
 class Upload extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      fileName: "Choose file"
+    };
+  }
+
+  onChange = (e) => {
+    let fileName = e.target.value;
+    this.setState({ fileName });
+  }
+
   render() {
+    const { fileName } = this.state;
+
     return (
       <div className="container">
         <div>
@@ -19,8 +33,8 @@ class Upload extends Component {
             </div>
             <label>Your audio (mp3 only) :</label>
             <div className="custom-file">
-              <input type="file" className="custom-file-input" id="customFile" />
-              <label className="custom-file-label">Choose file</label>
+              <input onChange={this.onChange} type="file" className="custom-file-input" id="customFile" name="file" />
+              <label className="custom-file-label">{fileName}</label>
             </div>
             <label>Script :</label>
             <div className="form-group">
