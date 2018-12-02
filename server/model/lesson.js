@@ -5,11 +5,13 @@ var Schema = mongoose.Schema;
 // create a schema
 var lessonSchema = new Schema({
   title: {type: String, required: true},
+  level: {type: String, required: true},
   script: {type: String, required: true},
-  user:{
+  user: {
     type: Schema.Types.ObjectId,
     ref: 'Users'
-  }
+  },
+  audio_path: {type: String, required: true}
 });
 
 // the schema is useless so far
