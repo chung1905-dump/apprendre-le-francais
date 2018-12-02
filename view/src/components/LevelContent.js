@@ -42,7 +42,7 @@ class LevelContent extends Component {
       let lesson = this.state.levels[currentLevel][key];
       return (
         <div key={key}>
-          <Link className="dropdown-item" to={`/listening/${lesson._id}`}>{lesson.title}</Link>
+          <Link className="dropdown-item" to={`/lesson/${lesson._id}`}>{lesson.title}</Link>
         </div>
       );
     });

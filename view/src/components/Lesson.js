@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 
 class Lesson extends Component {
   constructor(props) {
@@ -8,7 +8,6 @@ class Lesson extends Component {
       userAnswer: '',
       point: '...',
       correctAns: "",
-      point: ""
     }
   }
 
@@ -16,7 +15,7 @@ class Lesson extends Component {
     this.setState({
       userAnswer: e.target.value
     });
-  }
+  };
 
   // noinspection JSMethodCanBeStatic
   lcss = (X, Y) => {
@@ -57,9 +56,9 @@ class Lesson extends Component {
       point,
       userAnswer = this.parseStr(this.state.userAnswer),
       correctAnswer = this.parseStr(this.state.correctAns);
-      
-      console.log(this.state.correctAns)
-      
+
+    console.log(this.state.correctAns);
+
     let result = this.lcss(userAnswer, correctAnswer);
 
     {
@@ -111,17 +110,17 @@ class Lesson extends Component {
     str = str.filter(s => s.replace(/[^a-z]+/g, '').length > 0);
     // console.log(str);
     return str;
-  }
+  };
 
   componentDidMount() {
-    const { id } = this.props.match.params
+    const {id} = this.props.match.params;
     fetch(`/lesson/${id}`)
       .then(res => {
         res.json()
           .then(data => {
             console.log(data.script);
-            this.setState({ 
-              audio_path: data.audio_path,
+            this.setState({
+              audio_path: '../../public/storage/' + data.audio_path,
               correctAns: data.script
             })
           })
@@ -130,24 +129,25 @@ class Lesson extends Component {
   }
 
   render() {
+    console.log(this.state.audio_path);
     return (
       <div className="container">
         <div className="text-center">
           <div>
             <audio
               controls
-              src="/media/examples/t-rex-roar.mp3">
+              src={this.state.audio_path}>
             </audio>
             <div className="mt-3">
               <div className="form-group">
                 <label>Answer</label>
                 <textarea className="form-control" rows={5} id="answer" value={this.state.userAnswer}
-                  onChange={e => this.updateUserAns(e)} />
+                          onChange={e => this.updateUserAns(e)}/>
               </div>
             </div>
             <button onClick={this.checkAnswer} type="button" className="btn btn-success">Submit</button>
           </div>
-          <div dangerouslySetInnerHTML={{ __html: this.state.fixAns }}>
+          <div dangerouslySetInnerHTML={{__html: this.state.fixAns}}>
           </div>
           <div>
             <span>Your point: {this.state.point}</span>

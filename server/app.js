@@ -38,6 +38,7 @@ app.use(function (req, res, next) {
   next();
 });
 
+app.use('/public', express.static('../view/public'));
 app.use('/signup', signupRouter);
 app.use('/authenticate', authRouter);
 app.use('/login', loginRouter);
