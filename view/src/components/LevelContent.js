@@ -41,8 +41,8 @@ class LevelContent extends Component {
     let lessons = Object.keys(this.state.levels[currentLevel]).map((key) => {
       let lesson = this.state.levels[currentLevel][key];
       return (
-        <div>
-          <Link key={key} className="dropdown-item" to={`/listening/${lesson._id}`}>{lesson.title}</Link>
+        <div key={key}>
+          <Link className="dropdown-item" to={`/listening/${lesson._id}`}>{lesson.title}</Link>
         </div>
       );
     });
