@@ -1,21 +1,30 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 
 class Upload extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      lessonData: {},
       fileName: "Choose file",
       file: ""
     };
   }
 
-  onChange = (e) => {
+  onAudioChange = (e) => {
     let fileName = e.target.value;
     const file = e.target.files[0];
-    console.log(file)
-    this.setState({ 
+    this.setState({
       fileName,
-      file 
+      file
+    });
+  };
+
+  onInputChange = (e) => {
+    console.log(this.state);
+    this.setState({
+      lessonData: Object.assign(this.state.lessonData, {
+        [e.target.name]: e.target.value
+      })
     });
   };
 
@@ -23,15 +32,22 @@ class Upload extends Component {
     e.preventDefault();
     // const file = e.target.files[0];
     let formData = new FormData();
+    for (let name in this.state.lessonData) {
+      if (!this.state.lessonData.hasOwnProperty(name)) {
+        continue
+      }
+      formData.append(name, this.state.lessonData[name]);
+    }
     formData.append('customFile', this.state.file, 'customFile');
+    formData.append('token', localStorage.getItem('alf_user_token'));
     fetch('/upload', {
       method: 'POST',
       body: formData
     }).then(res => console.log(res));
-  }
+  };
 
   render() {
-    const { fileName } = this.state;
+    const {fileName} = this.state;
 
     return (
       <div className="container">
@@ -42,20 +58,23 @@ class Upload extends Component {
           <form onSubmit={this.uploadFile}>
             <div className="form-group">
               <label htmlFor="formGroupExampleInput">Title:</label>
-              <input type="text" className="form-control" name="title" placeholder="Title" />
+              <input type="text" className="form-control" name="title" onChange={this.onInputChange}
+                     placeholder="Title"/>
             </div>
             <div className="form-group">
               <label htmlFor="formGroupExampleInput2">Level</label>
-              <input type="text" className="form-control" name="level" placeholder="Level" />
+              <input type="text" className="form-control" name="level" onChange={this.onInputChange}
+                     placeholder="Level"/>
             </div>
             <label>Your audio (mp3 only):</label>
             <div className="custom-file">
-              <input type="file" className="custom-file-input" onChange={this.onChange} id="customFile" />
+              <input type="file" className="custom-file-input" onChange={this.onAudioChange} id="customFile"/>
               <label className="custom-file-label">{fileName}</label>
             </div>
             <label>Script:</label>
             <div className="form-group">
-              <textarea className="form-control" id="Script" rows="3" placeholder="text here..." />
+              <textarea className="form-control" id="Script" rows="3" onChange={this.onInputChange}
+                        name="script" placeholder="text here..."/>
             </div>
             <button type="submit" className="btn btn-primary">Submit</button>
           </form>

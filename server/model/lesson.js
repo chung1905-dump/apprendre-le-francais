@@ -7,10 +7,7 @@ var lessonSchema = new Schema({
   title: {type: String, required: true},
   level: {type: String, required: true},
   script: {type: String, required: true},
-  user: {
-    type: Schema.Types.ObjectId,
-    ref: 'Users'
-  },
+  user: {type: String, required: true},
   audio_path: {type: String, required: true}
 });
 

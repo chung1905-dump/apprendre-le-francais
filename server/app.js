@@ -4,7 +4,6 @@ var bodyParser = require('body-parser');
 var jwt = require('jsonwebtoken');
 var keys = require('./config/keys');
 
-var indexRouter = require('./routes/index');
 var signupRouter = require('./routes/user/signup');
 var loginRouter = require('./routes/user/signin');
 var authRouter = require('./routes/user/authenticate');
@@ -18,19 +17,24 @@ mongoose.connect('mongodb://localhost/alf', {
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 
+checkToken = function (token) {
+  var name = false;
+  jwt.verify(token, keys.secretKey, (err, decoded) => {
+    if (decoded !== undefined && Date.now() < decoded.exp * 1000) {
+      name = decoded.name;
+    }
+  });
+  return name;
+};
+
 app.use(function (req, res, next) {
   const body = req.body;
   if (body.token) {
-    jwt.verify(body.token, keys.secretKey, (err, decoded) => {
-      if (decoded !== undefined && Date.now() < decoded.exp * 1000) {
-        req.loggedUser = decoded.name
-      }
-    });
+    req.loggedUser = checkToken(body.token);
   }
   next();
 });
 
-app.use('/', indexRouter);
 app.use('/signup', signupRouter);
 app.use('/authenticate', authRouter);
 app.use('/login', loginRouter);
