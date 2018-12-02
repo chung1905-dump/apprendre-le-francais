@@ -10,6 +10,7 @@ import LevelContent from './components/LevelContent';
 import SignUp from './components/User/SignUp';
 import Login from './components/User/Login';
 import Upload from './components/User/Upload';
+import Lesson from './components/Lesson';
 
 class App extends Component {
 
@@ -21,6 +22,7 @@ class App extends Component {
           <Route exact path="/" component={HomeContent} />
           <Route path="/level/:level" component={LevelContent} />
           <Route path="/listening/:name" component={LearnContent} />
+          <Route path="/lesson/:id" component={Lesson} />
           <Route path="/user/signup" component={SignUp} />
           <Route path="/user/login" component={Login} />
           <Route path="/user/upload" component={Upload} />
