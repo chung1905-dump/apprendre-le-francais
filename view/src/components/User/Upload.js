@@ -20,7 +20,6 @@ class Upload extends Component {
   };
 
   onInputChange = (e) => {
-    console.log(this.state);
     this.setState({
       lessonData: Object.assign(this.state.lessonData, {
         [e.target.name]: e.target.value
@@ -43,7 +42,14 @@ class Upload extends Component {
     fetch('/upload', {
       method: 'POST',
       body: formData
-    }).then(res => console.log(res));
+    }).then(res => {
+      res.json().then((data) => {
+        window.alert(data.message);
+        if (data.status) {
+          this.props.history.push('/');
+        }
+      });
+    });
   };
 
   render() {
