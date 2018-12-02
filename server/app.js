@@ -10,6 +10,7 @@ var authRouter = require('./routes/user/authenticate');
 var uploadRouter = require('./routes/user/upload');
 var lessonRouter = require('./routes/lesson');
 var levelsRouter = require('./routes/levels');
+var levelRouter = require('./routes/level');
 
 var app = express();
 mongoose.connect('mongodb://localhost/alf', {
@@ -43,6 +44,7 @@ app.use('/login', loginRouter);
 app.use('/upload', uploadRouter);
 app.use('/lesson', lessonRouter);
 app.use('/levels', levelsRouter);
+app.use('/level', levelRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

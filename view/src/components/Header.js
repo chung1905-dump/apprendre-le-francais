@@ -19,10 +19,10 @@ class Header extends Component {
 
   render() {
     let levels = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'];
-    let levelDropDown = Object.keys(levels).map((key) => {
+    let levelDropDown = levels.map((level) => {
       return (
-        <li key={key} className="nav-item dropdown">
-          <Link className="dropdown-item" to={`/level/${levels[key]}`}>Level {levels[key]}</Link>
+        <li key={level} className="nav-item dropdown">
+          <Link className="dropdown-item" to={`/level/${level}`}>Level {level}</Link>
         </li>
       );
     });
