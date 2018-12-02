@@ -25,6 +25,7 @@ class Upload extends Component {
         [e.target.name]: e.target.value
       })
     });
+    console.log(this.state.lessonData);
   };
 
   uploadFile = (e) => {
@@ -69,8 +70,15 @@ class Upload extends Component {
             </div>
             <div className="form-group">
               <label htmlFor="formGroupExampleInput2">Level</label>
-              <input type="text" className="form-control" name="level" onChange={this.onInputChange}
-                     placeholder="Level"/>
+              <select className="form-control" name="level" onChange={this.onInputChange}>
+                <option>--Select Level--</option>
+                <option value="A1">A1</option>
+                <option value="A2">A2</option>
+                <option value="B1">B1</option>
+                <option value="B2">B2</option>
+                <option value="C1">C1</option>
+                <option value="C2">C2</option>
+              </select>
             </div>
             <label>Your audio (mp3 only):</label>
             <div className="custom-file">
