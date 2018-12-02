@@ -24,11 +24,11 @@ class Upload extends Component {
         <div className="row justify-content-md-center">
           <form>
             <div className="form-group">
-              <label for="formGroupExampleInput">Title:</label>
-              <input type="text" class="form-control" name="title" placeholder="Title" />
+              <label>Title:</label>
+              <input type="text" className="form-control" name="title" placeholder="Title" />
             </div>
             <div className="form-group">
-              <label for="formGroupExampleInput2">Level</label>
+              <label>Level</label>
               <input type="text" className="form-control" name="level" placeholder="Level" />
             </div>
             <label>Your audio (mp3 only) :</label>
