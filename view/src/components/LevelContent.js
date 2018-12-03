@@ -44,7 +44,7 @@ class LevelContent extends Component {
       return (
         <div key={key} className="jumbotron div-lesson">
           <Link className="lesson-title" to={`/lesson/${lesson._id}`}>
-            <h1>{lesson.title}</h1>
+            <h1><i class="fas fa-headphones-alt"></i> {lesson.title}</h1>
           </Link>
           <p className="lesson-author">Uploaded by {lesson.user}</p>
           <p className="lesson-level">Level {lesson.level}</p>
