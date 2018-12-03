@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
+import "../css/level-content.css"
 
 class LevelContent extends Component {
   constructor(props) {
@@ -41,14 +42,18 @@ class LevelContent extends Component {
     let lessons = Object.keys(this.state.levels[currentLevel]).map((key) => {
       let lesson = this.state.levels[currentLevel][key];
       return (
-        <div key={key}>
-          <Link className="dropdown-item" to={`/lesson/${lesson._id}`}>{lesson.title}</Link>
+        <div key={key} className="jumbotron div-lesson">
+          <Link className="lesson-title" to={`/lesson/${lesson._id}`}>
+            <h1>{lesson.title}</h1>
+          </Link>
+          <p className="lesson-author">Uploaded by {lesson.user}</p>
+          <p className="lesson-level">Level {lesson.level}</p>
         </div>
       );
     });
 
     return (
-      <div className="row justify-content-md-center">
+      <div className="container lessons-container">
         {lessons}
       </div>
     );
