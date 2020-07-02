@@ -1,50 +1,37 @@
 import React, {Component} from 'react';
-import Lessons from "../data/lessons";
 import {Link} from 'react-router-dom';
+import UserNavbar from './Header/Navbar';
+import "../css/header.css"
 
 class Header extends Component {
-  // need sort by levels after reduce
-  levels = Lessons.reduce(function (accumulator, currentValue) {
-    let lesson = {
-      title: currentValue.title,
-      url: currentValue.url,
-      id: currentValue.id
-    };
-    if (accumulator[currentValue.level] === undefined) {
-      accumulator[currentValue.level] = {
-        title: 'Level ' + currentValue.level,
-        lessons: []
-      };
-    }
-    accumulator[currentValue.level].lessons.push(lesson);
-    return accumulator;
-  }, []);
+  constructor() {
+    super();
+    // fetch('/levels', {
+    //   method: "GET",
+    // }).then(res => {
+    //   res.json().then((lessons) => {
+    //     console.log(lessons);
+    //     for (let i in lessons) {
+    //     }
+    //   });
+    // }).catch(err => console.log(err));
+  }
 
   render() {
-    let levelDropDown = Object.keys(this.levels).map((key) => {
-      let level = this.levels[key];
+    let levels = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'];
+    let levelDropDown = levels.map((level) => {
       return (
-        <li key={key} className="nav-item dropdown">
-          {/* eslint-disable-next-line */}
-          <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-             aria-haspopup="true" aria-expanded="false">
-            {level.title}
-          </a>
-          <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-            {level.lessons.map((lesson) => {
-              return (
-                <Link key={lesson.id} className="dropdown-item" to={`/listening/${lesson.url}`}>{lesson.title}</Link>
-              );
-            })}
-          </div>
+        <li key={level} className="nav-item dropdown">
+          <Link className="dropdown-item" to={`/level/${level}`}>Level {level}</Link>
         </li>
       );
     });
 
     return (
       <div className="container">
-        <div className="jumbotron">
-          <h1>Lawless French</h1>
+        <div className="jumbotron pt-0">
+          <img src="https://www.lawlessfrench.com/wp-content/uploads/logo.png" alt="Lawless French"/>
+          <div className="site-description">Learn Frencais For The Future</div>
           <nav className="navbar navbar-expand-lg navbar-light bg-light">
             <Link to="/" className="navbar-brand" href="#">Home</Link>
             <button className="navbar-toggler" type="button" data-toggle="collapse"
@@ -56,16 +43,7 @@ class Header extends Component {
               <ul className="navbar-nav mr-auto">
                 {levelDropDown}
               </ul>
-              <ul className="navbar-nav ml-auto">
-                <li className="nav-item">
-                  {/* eslint-disable-next-line */}
-                  <a className="nav-link" href="#"><strong>Sign Up</strong></a>
-                </li>
-                <li className="nav-item">
-                  {/* eslint-disable-next-line */}
-                  <a className="nav-link" href="#"><strong>Login</strong></a>
-                </li>
-              </ul>
+              <UserNavbar/>
             </div>
           </nav>
         </div>

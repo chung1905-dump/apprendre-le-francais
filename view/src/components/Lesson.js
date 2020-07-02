@@ -1,38 +1,24 @@
 import React, {Component} from 'react';
-import Lessons from "../data/lessons";
-import Answers from "../data/answers";
-import "../css/learn-content.css"
 
-class LearnContent extends Component {
+class Lesson extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      audio_path: "",
       userAnswer: '',
-      point: '...'
-    };
-    this.question = this.prepareData();
+      point: '...',
+      correctAns: "",
+    }
   }
 
-  prepareData() {
-    const name = this.props.match.params.name;
-    let result = Lessons.filter(obj => {
-      return obj.url === name
-    });
-    let ans = Answers.filter(a => {
-      return a.id === result[0].id;
-    });
-    result[0].correctAns = ans[0].answer;
-    return result[0];
-  }
-
-  updateUserAns(e) {
+  updateUserAns = (e) => {
     this.setState({
       userAnswer: e.target.value
     });
-  }
+  };
 
   // noinspection JSMethodCanBeStatic
-  lcss(X, Y) {
+  lcss = (X, Y) => {
     let maxOccurs = 0,
       table = {},
       firstOccurOnY = 0,
@@ -65,12 +51,13 @@ class LearnContent extends Component {
     };
   };
 
-
-  checkAnswer() {
+  checkAnswer = () => {
     let maxPoint = 10,
       point,
       userAnswer = this.parseStr(this.state.userAnswer),
-      correctAnswer = this.parseStr(this.question.correctAns);
+      correctAnswer = this.parseStr(this.state.correctAns);
+
+    console.log(this.state.correctAns);
 
     let result = this.lcss(userAnswer, correctAnswer);
 
@@ -97,11 +84,6 @@ class LearnContent extends Component {
       }
 
       let html = '';
-      console.log(a);
-      console.log(b);
-      console.log(c);
-      console.log(d);
-      console.log(e);
       html += ' <span class="wrong">' + a.join(' ') + ' </span>';
       html += ' <span class="fixed">' + b.join(' ') + '</span>';
       html += ' <span class="correct">' + c.join(' ') + '</span>';
@@ -114,30 +96,48 @@ class LearnContent extends Component {
 
     point = result.maxOccurs;
     point = point / correctAnswer.length * maxPoint;
+    // console.log(correctAnswer.length)
     point = Math.round(point * 100) / 100;
 
     this.setState({point: point + '/' + maxPoint});
+    // console.log(this.state.point)
   };
 
-  parseStr(str) {
+  parseStr = (str) => {
     str = str.replace(/\r?\n|\r/g, ' ');
     str = str.toLowerCase().replace(/[^a-z\s]+/g, '');
     str = str.split(' ');
     str = str.filter(s => s.replace(/[^a-z]+/g, '').length > 0);
-    console.log(str);
+    // console.log(str);
     return str;
+  };
+
+  componentDidMount() {
+    const {id} = this.props.match.params;
+    fetch(`/lesson/${id}`)
+      .then(res => {
+        res.json()
+          .then(data => {
+            console.log(data.script);
+            this.setState({
+              audio_path: '../../public/storage/' + data.audio_path,
+              correctAns: data.script
+            })
+          })
+      })
+      .catch(err => console.log(err))
   }
 
   render() {
-    this.question = this.prepareData();
+    console.log(this.state.audio_path);
     return (
       <div className="container">
         <div className="text-center">
           <div>
-            <div className="embed-responsive embed-responsive-16by9 border border-dark rounded">
-              <iframe title={this.question.title.title} className="embed-responsive-item"
-                      src={this.question.youtube_url}/>
-            </div>
+            <audio
+              controls
+              src={this.state.audio_path}>
+            </audio>
             <div className="mt-3">
               <div className="form-group">
                 <label>Answer</label>
@@ -145,7 +145,7 @@ class LearnContent extends Component {
                           onChange={e => this.updateUserAns(e)}/>
               </div>
             </div>
-            <button onClick={this.checkAnswer.bind(this)} type="button" className="btn btn-success">Submit</button>
+            <button onClick={this.checkAnswer} type="button" className="btn btn-success">Submit</button>
           </div>
           <div dangerouslySetInnerHTML={{__html: this.state.fixAns}}>
           </div>
@@ -158,4 +158,4 @@ class LearnContent extends Component {
   }
 }
 
-export default LearnContent;
+export default Lesson;
